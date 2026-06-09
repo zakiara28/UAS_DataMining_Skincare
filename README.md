@@ -73,3 +73,4 @@ streamlit run app/app.py
 ## Catatan
 
 Ubah bagian `IDENTITAS_ANGGOTA` di `app/app.py` sesuai nama dan NIM kelompok.
+# UAS_DataMining_Skincare
