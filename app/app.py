@@ -23,10 +23,240 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown("""
+<style>
+/* ====== SIDEBAR WEB STYLE ====== */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #fff1f7 0%, #ffe4ef 45%, #ffffff 100%);
+    border-right: 1px solid #f9a8d4;
+}
+
+section[data-testid="stSidebar"] > div {
+    padding-top: 1.5rem;
+}
+
+.sidebar-brand {
+    padding: 20px 16px;
+    margin-bottom: 18px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+    color: white;
+    box-shadow: 0 12px 30px rgba(190, 24, 93, 0.25);
+}
+
+.sidebar-logo {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.6px;
+    margin-bottom: 4px;
+}
+
+.sidebar-tagline {
+    font-size: 13px;
+    opacity: 0.92;
+    line-height: 1.5;
+}
+
+.sidebar-section-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: #9d174d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 10px 0 8px 4px;
+}
+
+.sidebar-footer {
+    margin-top: 28px;
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #fbcfe8;
+    font-size: 12px;
+    color: #831843;
+    line-height: 1.5;
+}
+
+/* Radio menu sidebar */
+/* ====== SIDEBAR MENU TANPA BULATAN RADIO ====== */
+
+/* Hilangkan bulatan radio */
+section[data-testid="stSidebar"] [data-baseweb="radio"] > div:first-child {
+    display: none !important;
+}
+
+/* Style item menu */
+section[data-testid="stSidebar"] div[role="radiogroup"] label {
+    width: 100%;
+    padding: 12px 14px !important;
+    border-radius: 16px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+/* Hover menu */
+section[data-testid="stSidebar"] div[role="radiogroup"] label:hover {
+    background: #ffffff;
+    border: 1px solid #f9a8d4;
+    transform: translateX(4px);
+    box-shadow: 0 8px 22px rgba(190, 24, 93, 0.12);
+}
+
+/* Text menu */
+section[data-testid="stSidebar"] div[role="radiogroup"] label p {
+    font-weight: 700;
+    color: #831843;
+    font-size: 14px;
+}
+
+/* Menu aktif */
+section[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {
+    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+    border: 1px solid #ec4899;
+    box-shadow: 0 10px 26px rgba(190, 24, 93, 0.25);
+    transform: translateX(4px);
+}
+
+/* Text menu aktif */
+section[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) p {
+    color: white !important;
+    font-weight: 800;
+}
+
+/* Background utama */
+.stApp {
+    background: linear-gradient(135deg, #fff7fb 0%, #fdf2f8 45%, #ffffff 100%);
+}
+
+/* Container utama */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    max-width: 1200px;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #fce7f3 0%, #fff7fb 100%);
+    border-right: 1px solid #f9a8d4;
+}
+
+/* Judul */
+h1 {
+    color: #9d174d;
+    font-weight: 800;
+}
+
+h2, h3 {
+    color: #be185d;
+}
+
+/* Metric card */
+div[data-testid="stMetric"] {
+    background: #ffffff;
+    border: 1px solid #fbcfe8;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(190, 24, 93, 0.08);
+}
+
+/* Tombol */
+.stButton > button {
+    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 0.7rem 1.2rem;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.25);
+}
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, #db2777 0%, #9d174d 100%);
+    color: white;
+    border: none;
+}
+
+/* Input, selectbox, textarea */
+div[data-baseweb="select"] > div,
+div[data-baseweb="input"] > div,
+textarea {
+    border-radius: 14px !important;
+}
+
+/* Dataframe */
+div[data-testid="stDataFrame"] {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #fbcfe8;
+}
+
+/* Alert */
+div[data-testid="stAlert"] {
+    border-radius: 16px;
+}
+
+/* Card custom */
+.hero-card {
+    padding: 34px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, #fce7f3 0%, #ffffff 65%);
+    border: 1px solid #f9a8d4;
+    box-shadow: 0 12px 35px rgba(190, 24, 93, 0.12);
+    margin-bottom: 24px;
+}
+
+.hero-title {
+    font-size: 40px;
+    font-weight: 850;
+    color: #9d174d;
+    margin-bottom: 8px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: #831843;
+    line-height: 1.6;
+}
+
+/* Product card */
+.product-card {
+    padding: 18px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #fbcfe8;
+    box-shadow: 0 8px 26px rgba(190, 24, 93, 0.08);
+    margin-bottom: 14px;
+}
+
+.product-title {
+    color: #9d174d;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.product-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #fce7f3;
+    color: #9d174d;
+    font-weight: 700;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-bottom: 8px;
+}
+</style>
+""", unsafe_allow_html=True)
+
 PROJECT_TITLE = "Sistem Rekomendasi Produk Skincare Menggunakan Clustering dan Classification"
 IDENTITAS_ANGGOTA = [
-    "Nama Anggota 1 - NIM",
-    "Nama Anggota 2 - NIM",
+    "Zakia Ramadhani (24051214081)",
+    "Komang Nency Astiti (24051214082)",
 ]
 
 # Folder dasar. Struktur yang disarankan:
@@ -488,9 +718,6 @@ def page_home(df, models):
     for anggota in IDENTITAS_ANGGOTA:
         st.write(f"- {anggota}")
 
-    st.info("Ubah bagian `IDENTITAS_ANGGOTA` di file `app.py` sesuai nama dan NIM kelompok kamu.")
-    show_missing_file_warning(df, models)
-
 
 def page_dataset(df):
     st.title("📊 Gambaran Umum Dataset")
@@ -804,8 +1031,6 @@ def main():
     )
 
     st.sidebar.divider()
-    st.sidebar.caption("UAS Data Mining")
-    st.sidebar.caption("Streamlit Web App")
 
     if page == "Beranda":
         page_home(df, models)
