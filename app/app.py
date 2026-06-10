@@ -771,14 +771,6 @@ def page_about(models):
     5. Admin dapat memasukkan produk baru. Sistem memprediksi cluster produk tersebut.
     """)
     
-    st.markdown("### 🔒 Status File Model")
-    status = pd.DataFrame([
-        {"Komponen File": "classification_best_model_dataset_terbaru.pkl", "Status Integrasi": "Terbaca (Sukses)" if models["classification_model"] is not None else "Gagal / Kosong"},
-        {"Komponen File": "kmeans_model.pkl", "Status Integrasi": "Terbaca (Sukses)" if models["kmeans_model"] is not None else "Gagal / Kosong"},
-        {"Komponen File": "tfidf_vectorizer.pkl", "Status Integrasi": "Terbaca (Sukses)" if models["tfidf_vectorizer"] is not None else "Gagal / Kosong"},
-    ])
-    st.dataframe(status, use_container_width=True)
-
 def main():
     init_session_data()
     df = st.session_state["data"]
