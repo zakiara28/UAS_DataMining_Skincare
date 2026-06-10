@@ -14,9 +14,6 @@ try:
 except Exception:
     px = None
 
-# ======================================================
-# KONFIGURASI DASAR & GLOBAL CSS DESIGN
-# ======================================================
 st.set_page_config(
     page_title="Skincare Recommendation System",
     page_icon="🧴",
@@ -195,7 +192,6 @@ section[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked)
 </style>
 """, unsafe_allow_html=True)
 
-# DATA STRUKTUR PROYEK ASLI
 DEFAULT_CLUSTER_LABELS = {
     0: "Exfoliating & Brightening",
     1: "Hydrating & Anti-Aging",
@@ -458,9 +454,6 @@ def draw_bar_chart(data, x, y, title, color_scale=None):
     else:
         st.bar_chart(data.set_index(x)[y])
 
-# ======================================================
-# 1. HALAMAN BERANDA (100% TEKS ASLI + DESAIN PRESTISIUS)
-# ======================================================
 def page_home(df, models):
     st.markdown(f"""
     <div class="hero-banner">
@@ -528,9 +521,6 @@ def page_home(df, models):
             * Informasi proyek dan alur sistem.
             """)
 
-# ======================================================
-# 2. HALAMAN GAMBARAN UMUM DATASET (100% ASLI RE-BUILT)
-# ======================================================
 def page_dataset(df):
     st.markdown('<h2 style="margin-top:0;">📊 Gambaran Umum Dataset</h2>', unsafe_allow_html=True)
     if df.empty:
@@ -569,9 +559,6 @@ def page_dataset(df):
         if "cluster_label" in df.columns:
             st.dataframe(df["cluster_label"].value_counts().reset_index(), use_container_width=True)
 
-# ======================================================
-# 3. HALAMAN CUSTOMER RECOMMENDATION
-# ======================================================
 def page_customer_recommendation(df, models):
     st.markdown('<h2 style="margin-top:0;">🎯 Prediksi / Rekomendasi Customer</h2>', unsafe_allow_html=True)
     if df.empty:
@@ -622,9 +609,6 @@ def page_customer_recommendation(df, models):
         for _, row in result.iterrows():
             show_product_card(row)
 
-# ======================================================
-# 4. HALAMAN ADMIN INPUT PRODUK
-# ======================================================
 def page_admin_input(df, models):
     st.markdown('<h2 style="margin-top:0;">🛠️ Admin: Input Produk Baru</h2>', unsafe_allow_html=True)
 
@@ -697,16 +681,12 @@ def page_admin_input(df, models):
                 del st.session_state["last_prediction"]
             st.rerun()
 
-# ======================================================
-# 5. HALAMAN VISUALISASI (100% STRUKTUR TEKS & FILE ASLI)
-# ======================================================
 def page_visualization(df):
     st.markdown('<h2 style="margin-top:0;">📈 Visualisasi</h2>', unsafe_allow_html=True)
     st.write("Halaman ini berisi grafik pendukung dan visualisasi hasil analisis untuk membantu membaca pola dataset, distribusi harga, jenis produk, serta hasil clustering.")
     
     st.divider()
     
-    # BAGIAN 1: GRAFIK PENDUKUNG
     st.subheader("📊 Grafik Pendukung")
     
     col_g1, col_g2 = st.columns(2)
@@ -730,12 +710,10 @@ def page_visualization(df):
         cl_dist.columns = ["cluster_label", "jumlah"]
         draw_bar_chart(cl_dist, "cluster_label", "jumlah", "")
 
-    # BAGIAN 2: VISUALISASI HASIL ANALISIS (IMAGE LOADER DARI NOTEBOOK)
     st.write("")
     st.divider()
     st.subheader("🔬 Visualisasi Hasil Analisis")
     
-    # Tampilkan Gambar lokal aset notebook sesuai daftar aslimu
     images_to_load = [
         ("price_category_distribution.png", "Distribusi Kategori Harga"),
         ("product_type_distribution.png", "Distribusi Jenis Produk"),
@@ -751,9 +729,6 @@ def page_visualization(df):
             st.image(str(img_path), caption=f"{caption} ({filename})", use_container_width=True)
             st.write("")
 
-# ======================================================
-# 6. HALAMAN TENTANG (100% STRUKTUR DATA & MATERI ASLI)
-# ======================================================
 def page_about(models):
     st.markdown('<h2 style="margin-top:0;">ℹ️ Tentang Proyek</h2>', unsafe_allow_html=True)
     
@@ -804,9 +779,6 @@ def page_about(models):
     ])
     st.dataframe(status, use_container_width=True)
 
-# ======================================================
-# CORE CONTROL DRIVER
-# ======================================================
 def main():
     init_session_data()
     df = st.session_state["data"]
@@ -821,7 +793,6 @@ def main():
     
     st.sidebar.markdown('<div class="sidebar-section-title">Navigasi Utama</div>', unsafe_allow_html=True)
     
-    # FIX: Teks "Pilih Halaman" sudah disembunyikan secara aman tanpa memicu error
     page = st.sidebar.radio(
         "Pilih Halaman",
         ["Beranda", "Gambaran Umum Dataset", "Prediksi / Rekomendasi Customer", "Admin Input Produk", "Visualisasi", "Tentang"],
