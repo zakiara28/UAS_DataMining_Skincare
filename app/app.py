@@ -700,7 +700,7 @@ def page_visualization(df):
         st.markdown("**Distribusi Jenis Produk**")
         pt_dist = df["product_type"].value_counts().head(15).reset_index()
         pt_dist.columns = ["product_type", "jumlah"]
-        color_sunset = px.colors.sequential.Sunsetpink if px is not None else None
+        color_sunset = px.colors.sequential.Sunset if px is not None else None
         draw_bar_chart(pt_dist, "product_type", "jumlah", "", color_sunset)
 
     st.write("")
